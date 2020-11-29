@@ -1,18 +1,17 @@
 <html>
   <head>
-    <title>Visualize Data with a Scatterplot Graph</title>
+    <title>Scatterplot Graph</title>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="scatterplot_graph.css" />
   </head>
-
   <body>
     <div id="scatterplot-stats">
-      <h1>Visualize Data with a Scatterplot Graph</h1>
-      <h3>FreeCodeCamp</h3>
+      <h1>Visualize Data with D3. Scatterplot Graph</h1>
+      <h3>Cyclists statistics</h3>
     </div>
 
     <script>
@@ -34,6 +33,7 @@
           .orient('bottom')
           .ticks(d3.time.seconds, 30)
           .tickFormat(ft);
+
         var yAxis = d3.svg.axis().scale(y).orient('left');
 
         var svg = d3
@@ -48,8 +48,9 @@
           .attr('height', height + margin.top + margin.bottom)
           .attr('x', 0)
           .attr('y', 0)
-          .attr('fill', 'white')
+          .attr('fill', 'lightgrey')
           .attr('fill-opacity', 0.8);
+
         svg = svg
           .append('g')
           .attr(
@@ -63,7 +64,7 @@
           .attr('class', 'tooltip');
 
         function doping(arg) {
-          return arg !== '' ? 'red' : 'orange';
+          return arg !== '' ? 'blue' : 'yellow';
         }
 
         function showToolTip(d, i) {
@@ -151,7 +152,7 @@
               .call(xAxis)
               .append('text')
               .attr('transform', 'translate(' + width + ',-30)')
-              .attr('dy', '1.8em')
+              .attr('dy', '1.0em')
               .attr('text-anchor', 'end')
               .text('Race time for 13.8km');
 
@@ -216,7 +217,7 @@
               .append('text')
               .attr('x', 10)
               .attr('y', 5)
-              .attr('fill', 'red')
+              .attr('fill', 'blue')
               .text('* Doping allegiance');
             var isNotDoped = svg
               .append('g')
@@ -227,7 +228,7 @@
               .append('text')
               .attr('x', 10)
               .attr('y', 5)
-              .attr('fill', 'orange')
+              .attr('fill', 'yellow')
               .text('* No doping allegiance');
           }
         });
